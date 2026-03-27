@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>正念·台灣 — 首頁</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">正念<span>·</span>台灣</div>
+    <div class="nav-section">
+      <div class="nav-label">主選單</div>
+      <a href="index.html" class="nav-item active">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>首頁
+      </a>
+      <a href="meditation.html" class="nav-item">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>冥想
+      </a>
+      <a href="tools.html" class="nav-item">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>工具
+      </a>
+      <a href="emotions.html" class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>情緒
+      </a>
+      <a href="profile.html" class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>我的
+      </a>
+    </div>
+    <div class="sidebar-footer">
+      <div class="sidebar-upgrade">
+        <h4>升級 Premium</h4>
+        <p>解鎖 10+ 場景冥想與睡眠故事</p>
+        <a href="#" class="btn-upgrade">NT$82 / 月起</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-left">
+        <h2>早安，今天先呼吸一下 🌿</h2>
+        <p>週五 · 3月27日</p>
+      </div>
+      <div class="topbar-right">
+        <span class="streak-badge">連續 7 天</span>
+        <div class="avatar">A</div>
+      </div>
+    </header>
+
+    <main class="page-body">
+      <!-- 今日冥想 -->
+      <div class="section-label">今日冥想（免費）</div>
+      <div class="card-green" style="display:flex;flex-direction:column;gap:12px;max-width:360px;margin-bottom:28px;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <div style="width:48px;height:48px;border-radius:13px;background:var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+          </div>
+          <div>
+            <h3 style="font-size:15px;font-weight:500;">正念呼吸</h3>
+            <p style="font-size:12px;color:var(--green);">5 分鐘 · 免費 · 今日推薦</p>
+          </div>
+        </div>
+        <button class="btn-play">
+          <svg viewBox="0 0 12 14"><path d="M1 1l10 6L1 13V1z"/></svg>
+          播放
+        </button>
+      </div>
+
+      <!-- 免費工具 -->
+      <div class="section-label">免費工具</div>
+      <div class="grid-2" style="max-width:480px;margin-bottom:28px;">
+        <a href="tools.html" class="card" style="display:flex;flex-direction:column;gap:10px;text-decoration:none;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="tool-icon" style="background:var(--blue-light);">
+              <svg viewBox="0 0 24 24" style="stroke:var(--blue);"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size:13px;font-weight:500;">呼吸計時器</h4>
+              <p style="font-size:11px;color:var(--muted);">4-7-8 · Box · 基礎</p>
+            </div>
+          </div>
+        </a>
+        <a href="tools.html" class="card" style="display:flex;flex-direction:column;gap:10px;text-decoration:none;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div class="tool-icon" style="background:var(--amber-light);">
+              <svg viewBox="0 0 24 24" style="stroke:var(--amber);"><rect x="2" y="3" width="20" height="18" rx="3"/><path d="M8 12h8M8 8h5M8 16h6"/></svg>
+            </div>
+            <div>
+              <h4 style="font-size:13px;font-weight:500;">番茄鐘</h4>
+              <p style="font-size:11px;color:var(--muted);">25 + 5 分鐘</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 場景冥想 -->
+      <div class="section-label">場景冥想（訂閱解鎖）</div>
+      <div class="grid-3" style="margin-bottom:28px;">
+        <!-- 鎖定卡片範本 -->
+        <div class="card" style="opacity:0.85;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <div style="width:40px;height:40px;border-radius:10px;background:#E8EEF5;display:flex;align-items:center;justify-content:center;font-size:18px;filter:blur(2px);flex-shrink:0;">🌙</div>
+            <div>
+              <h4 style="font-size:12px;font-weight:500;">睡前深度放鬆</h4>
+              <p style="font-size:11px;color:var(--muted);">15 分鐘</p>
+            </div>
+          </div>
+          <button class="btn-lock">
+            <svg viewBox="0 0 12 14"><rect x="1" y="6" width="10" height="8" rx="1.5"/><path d="M3.5 6V4a2.5 2.5 0 015 0v2" stroke="#ccc" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+            訂閱解鎖
+          </button>
+        </div>
+        <div class="card" style="opacity:0.85;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <div style="width:40px;height:40px;border-radius:10px;background:#EEF5EC;display:flex;align-items:center;justify-content:center;font-size:18px;filter:blur(2px);flex-shrink:0;">🌅</div>
+            <div>
+              <h4 style="font-size:12px;font-weight:500;">上班前清醒冥想</h4>
+              <p style="font-size:11px;color:var(--muted);">8 分鐘</p>
+            </div>
+          </div>
+          <button class="btn-lock">
+            <svg viewBox="0 0 12 14"><rect x="1" y="6" width="10" height="8" rx="1.5"/><path d="M3.5 6V4a2.5 2.5 0 015 0v2" stroke="#ccc" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+            訂閱解鎖
+          </button>
+        </div>
+        <div class="card" style="opacity:0.85;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <div style="width:40px;height:40px;border-radius:10px;background:#F5EEF0;display:flex;align-items:center;justify-content:center;font-size:18px;filter:blur(2px);flex-shrink:0;">🚇</div>
+            <div>
+              <h4 style="font-size:12px;font-weight:500;">通勤冥想</h4>
+              <p style="font-size:11px;color:var(--muted);">10 分鐘</p>
+            </div>
+          </div>
+          <button class="btn-lock">
+            <svg viewBox="0 0 12 14"><rect x="1" y="6" width="10" height="8" rx="1.5"/><path d="M3.5 6V4a2.5 2.5 0 015 0v2" stroke="#ccc" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+            訂閱解鎖
+          </button>
+        </div>
+      </div>
+
+      <!-- 白噪音 -->
+      <div class="section-label">白噪音</div>
+      <div class="noise-chips">
+        <span class="noise-chip active">雨聲</span>
+        <span class="noise-chip">咖啡廳</span>
+        <span class="noise-chip">海浪</span>
+        <span class="noise-chip">森林鳥叫</span>
+      </div>
+    </main>
+  </div>
+
+  <!-- ── Mobile Nav ── -->
+  <nav class="mobile-nav">
+    <div class="mobile-nav-inner">
+      <a href="index.html" class="mobile-tab active">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+        <span>首頁</span>
+      </a>
+      <a href="meditation.html" class="mobile-tab">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span>冥想</span>
+      </a>
+      <a href="tools.html" class="mobile-tab">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>
+        <span>工具</span>
+      </a>
+      <a href="emotions.html" class="mobile-tab">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <span>情緒</span>
+      </a>
+      <a href="profile.html" class="mobile-tab">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span>我的</span>
+      </a>
+    </div>
+  </nav>
+
+</div>
+</body>
+</html>

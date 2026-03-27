@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>正念·台灣 — 工具</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .timer-btn {
+      display: block; width: 100%;
+      background: var(--green); color: #fff;
+      border-radius: var(--radius-sm);
+      padding: 9px; font-size: 13px; font-weight: 500;
+      border: none; cursor: pointer; margin-top: 10px;
+      transition: opacity 0.15s;
+    }
+    .timer-btn:hover { opacity: 0.85; }
+    .timer-display { text-align: center; padding: 12px 0 4px; }
+    .timer-display .time { font-size: 36px; font-weight: 500; letter-spacing: -0.02em; }
+    .timer-display .sub  { font-size: 11px; color: var(--muted); margin-top: 3px; }
+    .breath-circle-wrap { display: flex; justify-content: center; align-items: center; padding: 14px 0; }
+    .breath-circle {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: var(--green-light);
+      border: 2px solid var(--green-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: var(--green); font-weight: 500;
+      animation: breathe 8s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      40% { transform: scale(1.3); }
+      60% { transform: scale(1.3); }
+    }
+  </style>
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">正念<span>·</span>台灣</div>
+    <div class="nav-section">
+      <div class="nav-label">主選單</div>
+      <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>首頁</a>
+      <a href="meditation.html" class="nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>冥想</a>
+      <a href="tools.html" class="nav-item active"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>工具</a>
+      <a href="emotions.html" class="nav-item"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>情緒</a>
+      <a href="profile.html" class="nav-item"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>我的</a>
+    </div>
+    <div class="sidebar-footer">
+      <div class="sidebar-upgrade">
+        <h4>升級 Premium</h4>
+        <p>解鎖 10+ 場景冥想與睡眠故事</p>
+        <a href="#" class="btn-upgrade">NT$82 / 月起</a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-left"><h2>工具</h2></div>
+      <div class="topbar-right">
+        <span class="streak-badge">連續 7 天</span>
+        <div class="avatar">A</div>
+      </div>
+    </header>
+
+    <main class="page-body">
+      <div class="grid-2" style="max-width:720px;">
+
+        <!-- 白噪音 -->
+        <div>
+          <div class="section-label">白噪音</div>
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+              <div class="tool-icon" style="background:var(--blue-light);">
+                <svg viewBox="0 0 24 24" style="stroke:var(--blue);"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+              </div>
+              <div>
+                <h4 style="font-size:13px;font-weight:500;">白噪音播放器</h4>
+                <p style="font-size:11px;color:var(--green);">播放中：雨聲</p>
+              </div>
+            </div>
+            <div class="noise-chips">
+              <span class="noise-chip active">雨聲</span>
+              <span class="noise-chip">咖啡廳</span>
+              <span class="noise-chip">海浪</span>
+              <span class="noise-chip">森林</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 番茄鐘 -->
+        <div>
+          <div class="section-label">番茄鐘</div>
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+              <div class="tool-icon" style="background:var(--amber-light);">
+                <svg viewBox="0 0 24 24" style="stroke:var(--amber);"><rect x="2" y="3" width="20" height="18" rx="3"/><path d="M8 12h8M8 8h5M8 16h6"/></svg>
+              </div>
+              <div>
+                <h4 style="font-size:13px;font-weight:500;">番茄鐘</h4>
+                <p style="font-size:11px;color:var(--muted);">25 + 5 分鐘</p>
+              </div>
+            </div>
+            <div class="timer-display">
+              <div class="time" id="pomodoro-time">25:00</div>
+              <div class="sub" id="pomodoro-label">工作時間</div>
+            </div>
+            <button class="timer-btn" id="pomodoro-btn" onclick="togglePomodoro()">開始</button>
+          </div>
+        </div>
+
+        <!-- 呼吸計時器 -->
+        <div style="grid-column: 1 / -1;">
+          <div class="section-label">呼吸計時器</div>
+          <div class="card">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+              <div class="tool-icon" style="background:var(--green-light);">
+                <svg viewBox="0 0 24 24" style="stroke:var(--green);"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              </div>
+              <div>
+                <h4 style="font-size:13px;font-weight:500;">呼吸計時器</h4>
+                <p style="font-size:11px;color:var(--muted);">選擇呼吸模式開始練習</p>
+              </div>
+            </div>
+            <div class="breath-modes" style="margin-bottom:14px;">
+              <span class="breath-mode active">4-7-8</span>
+              <span class="breath-mode">Box (4-4-4-4)</span>
+              <span class="breath-mode">基礎 (2-4)</span>
+            </div>
+            <div class="breath-circle-wrap">
+              <div class="breath-circle">吸氣</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <nav class="mobile-nav">
+    <div class="mobile-nav-inner">
+      <a href="index.html" class="mobile-tab"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>首頁</span></a>
+      <a href="meditation.html" class="mobile-tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>冥想</span></a>
+      <a href="tools.html" class="mobile-tab active"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg><span>工具</span></a>
+      <a href="emotions.html" class="mobile-tab"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>情緒</span></a>
+      <a href="profile.html" class="mobile-tab"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>我的</span></a>
+    </div>
+  </nav>
+</div>
+
+<script>
+  // Pomodoro basic logic
+  let pomodoroInterval = null;
+  let pomodoroSeconds = 25 * 60;
+  let isWork = true;
+  let running = false;
+
+  function togglePomodoro() {
+    if (running) {
+      clearInterval(pomodoroInterval);
+      running = false;
+      document.getElementById('pomodoro-btn').textContent = '繼續';
+    } else {
+      running = true;
+      document.getElementById('pomodoro-btn').textContent = '暫停';
+      pomodoroInterval = setInterval(() => {
+        pomodoroSeconds--;
+        if (pomodoroSeconds < 0) {
+          isWork = !isWork;
+          pomodoroSeconds = isWork ? 25 * 60 : 5 * 60;
+          document.getElementById('pomodoro-label').textContent = isWork ? '工作時間' : '休息時間';
+        }
+        const m = String(Math.floor(pomodoroSeconds / 60)).padStart(2, '0');
+        const s = String(pomodoroSeconds % 60).padStart(2, '0');
+        document.getElementById('pomodoro-time').textContent = `${m}:${s}`;
+      }, 1000);
+    }
+  }
+
+  // Noise chip toggle
+  document.querySelectorAll('.noise-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.closest('.noise-chips').querySelectorAll('.noise-chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+    });
+  });
+
+  // Breath mode toggle
+  document.querySelectorAll('.breath-mode').forEach(mode => {
+    mode.addEventListener('click', () => {
+      document.querySelectorAll('.breath-mode').forEach(m => m.classList.remove('active'));
+      mode.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>正念·台灣 — 情緒</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">正念<span>·</span>台灣</div>
+    <div class="nav-section">
+      <div class="nav-label">主選單</div>
+      <a href="index.html" class="nav-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>首頁</a>
+      <a href="meditation.html" class="nav-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>冥想</a>
+      <a href="tools.html" class="nav-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>工具</a>
+      <a href="emotions.html" class="nav-item active"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>情緒</a>
+      <a href="profile.html" class="nav-item"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>我的</a>
+    </div>
+    <div class="sidebar-footer">
+      <div class="sidebar-upgrade">
+        <h4>升級 Premium</h4>
+        <p>解鎖 10+ 場景冥想與睡眠故事</p>
+        <a href="#" class="btn-upgrade">NT$82 / 月起</a>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main-content">
+    <header class="topbar">
+      <div class="topbar-left"><h2>情緒</h2></div>
+      <div class="topbar-right">
+        <span class="streak-badge">連續 7 天</span>
+        <div class="avatar">A</div>
+      </div>
+    </header>
+
+    <main class="page-body">
+      <div class="grid-2" style="max-width:720px;">
+
+        <!-- 今日打卡 -->
+        <div>
+          <div class="section-label">今日打卡</div>
+          <div class="card">
+            <p style="font-size:12px;color:var(--muted);margin-bottom:12px;">現在感覺怎麼樣？</p>
+            <div class="emotion-dots">
+              <div class="emotion-dot" onclick="selectMood(this, 1)">😔</div>
+              <div class="emotion-dot" onclick="selectMood(this, 2)">😕</div>
+              <div class="emotion-dot active" onclick="selectMood(this, 3)">😐</div>
+              <div class="emotion-dot" onclick="selectMood(this, 4)">🙂</div>
+              <div class="emotion-dot" onclick="selectMood(this, 5)">😊</div>
+            </div>
+            <div class="recommend-label">根據你的心情，推薦</div>
+            <div class="recommend-card">
+              <span class="emoji">🌬️</span>
+              <div>
+                <h4>正念呼吸</h4>
+                <p>5 分鐘 · 免費</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 連續打卡 + 趨勢 -->
+        <div>
+          <div class="section-label">本週連續打卡</div>
+          <div class="card" style="margin-bottom:12px;">
+            <div class="streak-row">
+              <div class="streak-day done">一</div>
+              <div class="streak-day done">二</div>
+              <div class="streak-day done">三</div>
+              <div class="streak-day done">四</div>
+              <div class="streak-day done">五</div>
+              <div class="streak-day">六</div>
+              <div class="streak-day">日</div>
+            </div>
+          </div>
+
+          <div class="section-label">本週情緒趨勢</div>
+          <div class="card">
+            <div class="bar-chart">
+              <div class="bar" style="height:40%;"></div>
+              <div class="bar" style="height:55%;"></div>
+              <div class="bar" style="height:45%;"></div>
+              <div class="bar" style="height:70%;"></div>
+              <div class="bar today" style="height:60%;"></div>
+              <div class="bar future" style="height:15%;"></div>
+              <div class="bar future" style="height:15%;"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:6px;">
+              <span style="font-size:10px;color:var(--muted);">一</span>
+              <span style="font-size:10px;color:var(--muted);">二</span>
+              <span style="font-size:10px;color:var(--muted);">三</span>
+              <span style="font-size:10px;color:var(--muted);">四</span>
+              <span style="font-size:10px;color:var(--green);font-weight:500;">五</span>
+              <span style="font-size:10px;color:var(--muted);">六</span>
+              <span style="font-size:10px;color:var(--muted);">日</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <nav class="mobile-nav">
+    <div class="mobile-nav-inner">
+      <a href="index.html" class="mobile-tab"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span>首頁</span></a>
+      <a href="meditation.html" class="mobile-tab"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span>冥想</span></a>
+      <a href="tools.html" class="mobile-tab"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg><span>工具</span></a>
+      <a href="emotions.html" class="mobile-tab active"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg><span>情緒</span></a>
+      <a href="profile.html" class="mobile-tab"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>我的</span></a>
+    </div>
+  </nav>
+</div>
+
+<script>
+  function selectMood(el, score) {
+    document.querySelectorAll('.emotion-dot').forEach(d => d.classList.remove('active'));
+    el.classList.add('active');
+    // TODO: 根據 score 更新 AI 推薦邏輯
+  }
+</script>
+</body>
+</html>
