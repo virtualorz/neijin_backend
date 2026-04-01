@@ -9,8 +9,9 @@ use App\Core\Enums\UserRole;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends AuthModel
+class User extends AuthModel implements JWTSubject
 {
     use Notifiable, SoftDeletes;
 
@@ -54,8 +55,17 @@ class User extends AuthModel
             'daily_reminder' => 'boolean',
             'reminder_meditation' => 'boolean',
             'reminder_emotion' => 'boolean',
-            'password' => 'hashed',
         ];
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(): array
+    {
+        return [];
     }
 
     public function subscription_list(): HasMany

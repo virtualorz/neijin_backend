@@ -22,7 +22,7 @@ class AuthService extends Service implements AuthContract
     {
         try {
             $token = Auth::guard('api')->attempt([
-                'account' => $account,
+                'phone' => $account,
                 'password' => $password
             ]);
 
@@ -43,11 +43,7 @@ class AuthService extends Service implements AuthContract
         $expiration_time = $this->_gen_expiration_time();
         $user = Auth::guard('api')->user();
 
-        // 更新 last_login 時間戳記
-        $user->last_login = now();
-        $user->save();
-
-        $user_info = ['user' => $user->load(['active_member_vip_list'])->toArray()];
+        $user_info = ['user' => $user->toArray()];
         $login_info = [
             'expiration_time' => $expiration_time->toDateTimeString(),
             'user' => $user_info

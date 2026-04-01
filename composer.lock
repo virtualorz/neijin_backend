@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "72824370e1c30d99719299af60729433",
+    "content-hash": "fe71c430c1fda7374dcaca6baa1033e9",
     "packages": [
         {
             "name": "beste/clock",
@@ -8076,6 +8076,134 @@
             "time": "2025-12-02T11:56:42+00:00"
         },
         {
+            "name": "twilio/sdk",
+            "version": "8.11.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twilio/twilio-php",
+                "reference": "a1bc6e730d357a69914e876ed72dc70ffc0c8551"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/a1bc6e730d357a69914e876ed72dc70ffc0c8551",
+                "reference": "a1bc6e730d357a69914e876ed72dc70ffc0c8551",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "phpunit/phpunit": ">=7.0 < 10"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Twilio\\": "src/Twilio/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Twilio API Team",
+                    "email": "api@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "https://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "time": "2026-03-24T12:45:14+00:00"
+        },
+        {
+            "name": "tymon/jwt-auth",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tymondesigns/jwt-auth.git",
+                "reference": "6c70930a92710d97e8e52b182fca2176097f33be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tymondesigns/jwt-auth/zipball/6c70930a92710d97e8e52b182fca2176097f33be",
+                "reference": "6c70930a92710d97e8e52b182fca2176097f33be",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/contracts": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/http": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/support": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "lcobucci/jwt": "^4.0|^5.0",
+                "nesbot/carbon": "^2.69|^3.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "illuminate/console": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/database": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "illuminate/routing": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "mockery/mockery": "^1.6",
+                "phpunit/phpunit": "^9.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "JWTAuth": "Tymon\\JWTAuth\\Facades\\JWTAuth",
+                        "JWTFactory": "Tymon\\JWTAuth\\Facades\\JWTFactory"
+                    },
+                    "providers": [
+                        "Tymon\\JWTAuth\\Providers\\LaravelServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-2.x": "2.0-dev",
+                    "dev-develop": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tymon\\JWTAuth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean Tymon",
+                    "email": "tymon148@gmail.com",
+                    "homepage": "https://tymon.xyz",
+                    "role": "Developer"
+                }
+            ],
+            "description": "JSON Web Token Authentication for Laravel and Lumen",
+            "homepage": "https://github.com/tymondesigns/jwt-auth",
+            "keywords": [
+                "Authentication",
+                "JSON Web Token",
+                "auth",
+                "jwt",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/tymondesigns/jwt-auth/issues",
+                "source": "https://github.com/tymondesigns/jwt-auth"
+            },
+            "time": "2026-03-06T09:50:45+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.6.3",
             "source": {
@@ -10619,5 +10747,5 @@
         "php": "^8.2"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
