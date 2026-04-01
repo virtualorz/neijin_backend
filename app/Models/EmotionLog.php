@@ -20,16 +20,10 @@ class EmotionLog extends Model
     {
         return [
             'user_id' => 'required|integer',
-            'user_id' => 'required|integer',
             'score' => 'required',
             'logged_date' => 'required|date',
             'note' => 'nullable|string'
         ];
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function user(): BelongsTo

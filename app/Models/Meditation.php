@@ -26,42 +26,12 @@ class Meditation extends Model
             'cover_image' => 'nullable|array',
             'is_free' => 'required|bool',
             'is_published' => 'required|bool',
-            'sort_order' => 'required',
-            'is_free' => 'required',
-            'meditation_id' => 'required|integer',
-            'meditation_id' => 'required|integer',
-            'meditation_category_id' => 'required|integer',
-            'meditation_category_id' => 'required|integer'
+            'sort_order' => 'required'
         ];
     }
 
-    public function meditation_list(): HasMany
+    public function meditation_category_list(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->hasMany(Meditation::class, 'meditation_id', 'id');
-    }
-
-    public function meditation_list(): HasMany
-    {
-        return $this->hasMany(Meditation::class, 'meditation_id', 'id');
-    }
-
-    public function meditation(): BelongsTo
-    {
-        return $this->belongsTo(Meditation::class, 'meditation_id', 'id');
-    }
-
-    public function meditation(): BelongsTo
-    {
-        return $this->belongsTo(Meditation::class, 'meditation_id', 'id');
-    }
-
-    public function meditation_category(): BelongsTo
-    {
-        return $this->belongsTo(MeditationCategory::class, 'meditation_category_id', 'id');
-    }
-
-    public function meditation_category(): BelongsTo
-    {
-        return $this->belongsTo(MeditationCategory::class, 'meditation_category_id', 'id');
+        return $this->belongsToMany(MeditationCategory::class, 'meditation_category', 'meditation_id', 'meditation_category_id');
     }
 }

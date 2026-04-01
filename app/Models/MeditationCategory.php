@@ -26,13 +26,8 @@ class MeditationCategory extends Model
         ];
     }
 
-    public function meditation_list(): HasMany
+    public function meditation_list(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->hasMany(Meditation::class, 'meditation_category_id', 'id');
-    }
-
-    public function meditation_list(): HasMany
-    {
-        return $this->hasMany(Meditation::class, 'meditation_category_id', 'id');
+        return $this->belongsToMany(Meditation::class, 'meditation_category', 'meditation_category_id', 'meditation_id');
     }
 }

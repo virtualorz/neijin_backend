@@ -20,17 +20,11 @@ class UserMeditationHistory extends Model
     {
         return [
             'user_id' => 'required|integer',
-            'user_id' => 'required|integer',
             'playable' => 'required',
             'duration_seconds' => 'nullable',
             'completed' => 'required|bool',
             'played_date' => 'required|date'
         ];
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
     public function user(): BelongsTo

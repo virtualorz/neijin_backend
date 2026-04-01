@@ -2,14 +2,10 @@
 
 namespace App\Models;
 
-use App\Core\Enums\FontSize;
-use App\Core\Enums\Membership;
-use App\Core\Enums\Theme;
-use App\Core\Enums\UserRole;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Model
+class Auth extends AuthModel implements JWTSubject
 {
     use SoftDeletes;
 
@@ -45,10 +41,6 @@ class User extends Model
     {
         return [
             'avatar' => 'array',
-            'role' => UserRole::class,
-            'membership' => Membership::class,
-            'theme' => Theme::class,
-            'font_size' => FontSize::class,
             'phone_verified_at' => 'datetime',
             'daily_reminder' => 'boolean',
             'reminder_meditation' => 'boolean',
@@ -57,18 +49,13 @@ class User extends Model
         ];
     }
 
-    public function subscription_list(): HasMany
+    public function getJWTIdentifier()
     {
-        return $this->hasMany(Subscription::class, 'user_id', 'id');
+        return $this->getKey();
     }
 
-    public function emotion_log_list(): HasMany
+    public function getJWTCustomClaims(): array
     {
-        return $this->hasMany(EmotionLog::class, 'user_id', 'id');
-    }
-
-    public function user_meditation_history_list(): HasMany
-    {
-        return $this->hasMany(UserMeditationHistory::class, 'user_id', 'id');
+        return [];
     }
 }
