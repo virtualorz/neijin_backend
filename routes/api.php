@@ -47,8 +47,9 @@ Route::prefix('users')->controller(UserController::class)->group(function() {
     Route::put('/', 'update');
 });
 
-// User preferences (standalone controller to avoid SDK model conflict)
-Route::put('/users/preferences', [UserPreferencesController::class, 'update']);
+// User settings (standalone controller)
+Route::put('/user-settings/preferences', [UserPreferencesController::class, 'update']);
+Route::put('/user-settings/reminders', [UserPreferencesController::class, 'update_reminders']);
 
 // SubscriptionPlan routes
 Route::prefix('subscription-plans')->controller(SubscriptionPlanController::class)->group(function() {
