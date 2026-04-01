@@ -2,12 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class Auth extends AuthModel implements JWTSubject
 {
-    use SoftDeletes;
+
 
     protected $table = 'users';
     protected $primaryKey = 'id';

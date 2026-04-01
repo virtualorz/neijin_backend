@@ -2,14 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PersonalAccessToken extends Model
 {
-    use SoftDeletes;
+
 
     protected $table = 'personal_access_tokens';
     protected $primaryKey = 'id';

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Core\Enums\BillingCycle;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class SubscriptionPlan extends Model
