@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Repositories;
+
+use Jsadways\LaravelSDK\Repositories\Repository as BaseRepository;
+
+class Repository extends BaseRepository
+{
+
+}

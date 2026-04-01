@@ -16,6 +16,7 @@ return new class extends Migration
             $table->json('audio')->comment('GCS 音頻 {"bucket","path","url"}');
             $table->json('cover_image')->nullable()->comment('GCS 封面圖');
             $table->json('background_music')->nullable()->comment('GCS 背景音樂');
+            $table->boolean('is_free')->default(false)->comment('是否可免費試聽');
             $table->boolean('is_published')->default(false);
             $table->unsignedSmallInteger('sort_order')->default(0);
             $table->timestamps();
