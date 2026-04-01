@@ -7,5 +7,5 @@ use App\Core\Controllers\User\UserContract;
 
 class UserController extends Controller implements UserContract
 {
-    
+
 }

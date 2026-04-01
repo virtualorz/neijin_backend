@@ -3,7 +3,8 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\MemberRegistrationController;
 use App\Http\Controllers\Api\MemberResetPasswordController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\Api\UserPreferencesController;
 use App\Http\Controllers\SubscriptionPlanController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\MeditationCategoryController;
@@ -45,6 +46,9 @@ Route::prefix('users')->controller(UserController::class)->group(function() {
     Route::post('/', 'create');
     Route::put('/', 'update');
 });
+
+// User preferences (standalone controller to avoid SDK model conflict)
+Route::put('/users/preferences', [UserPreferencesController::class, 'update']);
 
 // SubscriptionPlan routes
 Route::prefix('subscription-plans')->controller(SubscriptionPlanController::class)->group(function() {
