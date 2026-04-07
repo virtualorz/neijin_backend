@@ -11,7 +11,6 @@ class CreateMeditationCategoryDto extends Dto
         public readonly string $slug,
         public readonly ?array $icon,
         public readonly string $sort_order,
-        public readonly array $create_meditation_list = [],
         public readonly array $create_meditation_list = []
     )
     {

@@ -14,9 +14,6 @@ class UpdateMeditationCategoryDto extends Dto
         public readonly string $sort_order,
         public readonly array $create_meditation_list = [],
         public readonly array $update_meditation_list = [],
-        public readonly array $delete_meditation_list = [],
-        public readonly array $create_meditation_list = [],
-        public readonly array $update_meditation_list = [],
         public readonly array $delete_meditation_list = []
     )
     {

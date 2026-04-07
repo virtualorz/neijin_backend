@@ -23,22 +23,41 @@ class FileColumnProcessService extends Service implements FileColumnProcessContr
      * @throws ServiceException
      * @throws ReflectionException
      */
-    public function create(array $payload, String $model): array
+    public function create(array $payload, String $model, String $upload_dir = null): array
     {
         // TODO: Implement create() method.
         $all_file_columns = $this->_get_file_columns($model);
-        return $this->_process_create(structure: $all_file_columns,payload: $payload);
+        return $this->_process_create(structure: $all_file_columns,payload: $payload,upload_dir: $upload_dir);
     }
 
     /**
      * @throws ReflectionException
      * @throws ServiceException
      */
-    public function update(array $payload, String $model, array $db_data): array
+    public function update(array $payload, String $model, array $db_data, String $upload_dir = null): array
     {
         // TODO: Implement update() method.
         $all_file_columns = $this->_get_file_columns($model);
-        return $this->_process_update(structure: $all_file_columns,payload: $payload,db_data: $db_data);
+        return $this->_process_update(structure: $all_file_columns,payload: $payload,db_data: $db_data,upload_dir: $upload_dir);
+    }
+
+    /**
+     * @throws ServiceException
+     */
+    public function html_content(string $html,string $upload_dir = null): string
+    {
+        preg_match_all('/<img[^>]+src=["\'](?!https?:\/\/)([^"\']+)["\'][^>]*>/i', $html, $matches);
+        if (!empty($matches[1])) {
+            $image_file_keys = $matches[1];
+            foreach ($image_file_keys as $image_file_key) {
+                $file_data = $this->file_handle_service->store(file_key:$image_file_key,upload_dir: $upload_dir);
+                if(isset($file_data[0])){
+                    $image_url = $file_data[0]['url'];
+                    $html = str_replace($image_file_key, $image_url, $html);
+                }
+            }
+        }
+        return $html;
     }
 
     /**
@@ -54,19 +73,19 @@ class FileColumnProcessService extends Service implements FileColumnProcessContr
     /**
      * @throws ServiceException
      */
-    protected function _process_create(array $structure, array $payload):array
+    protected function _process_create(array $structure, array $payload, string $upload_dir = null):array
     {
         foreach($structure['file_columns'] as $file_column){
             if(isset($payload[$file_column])){
 
-                $payload[$file_column] = $this->file_handle_service->store(file_key:$payload[$file_column]);
+                $payload[$file_column] = $this->file_handle_service->store(file_key:$payload[$file_column],upload_dir: $upload_dir)[0];
             }
         }
 
         foreach($structure['next'] as $next){
             if(isset($payload['create_'.$next['name']])){
                 foreach($payload['create_'.$next['name']] as $index => $next_payload){
-                    $payload['create_'.$next['name']][$index] = $this->_process_create(structure:$next,payload:$next_payload);
+                    $payload['create_'.$next['name']][$index] = $this->_process_create(structure:$next,payload:$next_payload,upload_dir: $upload_dir);
                 }
             }
         }
@@ -77,12 +96,13 @@ class FileColumnProcessService extends Service implements FileColumnProcessContr
     /**
      * @throws ServiceException
      */
-    protected function _process_update(array $structure, array $payload, array $db_data, bool $encode_file = false):array
+    protected function _process_update(array $structure, array $payload, array $db_data, string $upload_dir = null, bool $encode_file = false):array
     {
         foreach($structure['file_columns'] as $file_column){
             if(isset($payload[$file_column])){
                 $files_in_db = ($db_data[$file_column] !== null ) ? $db_data[$file_column] : [];
                 $files_classify = $this->file_handle_service->classify($files_in_db,$payload[$file_column])->get(); # file_to_create[] , file_not_modify[] , file_to_delete[]
+
                 $confirm = $this->file_handle_service->match(files_in_db: $files_in_db,files_not_modify: $files_classify['files_not_modify']);
                 if (!$confirm->is_match)
                 {
@@ -91,7 +111,11 @@ class FileColumnProcessService extends Service implements FileColumnProcessContr
                 //刪除GCS檔案
                 $this->file_handle_service->delete(files:$files_classify['files_to_delete']);
                 //合併存檔
-                $payload[$file_column] = array_merge($this->file_handle_service->store(file_key:$files_classify['files_to_create']),$files_classify['files_not_modify']);
+                $payload[$file_column] = array_merge($this->file_handle_service->store(file_key:$files_classify['files_to_create'],upload_dir: $upload_dir),$files_classify['files_not_modify']);
+
+                if(!array_is_list($db_data[$file_column])){
+                    $payload[$file_column] = $payload[$file_column][0];
+                }
                 if($encode_file){
                     $payload[$file_column] = json_encode($payload[$file_column]);
                 }
@@ -101,13 +125,13 @@ class FileColumnProcessService extends Service implements FileColumnProcessContr
         foreach($structure['next'] as $next){
             if(isset($payload['create_'.$next['name']])){
                 foreach($payload['create_'.$next['name']] as $index=>$next_data){
-                    $payload['create_'.$next['name']][$index] = $this->_process_create(structure:$next,payload:$next_data);
+                    $payload['create_'.$next['name']][$index] = $this->_process_create(structure:$next,payload:$next_data,upload_dir: $upload_dir);
                 }
             }
             if(isset($payload['update_'.$next['name']])){
                 foreach($payload['update_'.$next['name']] as $index=>$next_data){
                     $next_db_data = collect($db_data[$next['name']])->where('id',$next_data['id'])->first();
-                    $payload['update_'.$next['name']][$index] = $this->_process_update(structure:$next,payload:$next_data,db_data: $next_db_data,encode_file:true);
+                    $payload['update_'.$next['name']][$index] = $this->_process_update(structure: $next, payload: $next_data, db_data: $next_db_data, upload_dir: $upload_dir, encode_file: true);
                 }
             }
 

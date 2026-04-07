@@ -1,20 +1,21 @@
 <?php
 
-use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\FileUploadController;
 use App\Http\Controllers\Api\MemberRegistrationController;
 use App\Http\Controllers\Api\MemberResetPasswordController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\Api\UserPreferencesController;
-use App\Http\Controllers\SubscriptionPlanController;
-use App\Http\Controllers\SubscriptionController;
-use App\Http\Controllers\MeditationCategoryController;
-use App\Http\Controllers\MeditationController;
-use App\Http\Controllers\SleepStoryController;
-use App\Http\Controllers\WhiteNoiseController;
-use App\Http\Controllers\BreathingPatternController;
-use App\Http\Controllers\EmotionLogController;
-use App\Http\Controllers\UserMeditationHistoryController;
-use App\Http\Controllers\PersonalAccessTokenController;
+use App\Http\Controllers\API\SubscriptionPlanController;
+use App\Http\Controllers\API\SubscriptionController;
+use App\Http\Controllers\API\MeditationCategoryController;
+use App\Http\Controllers\API\MeditationController;
+use App\Http\Controllers\API\SleepStoryController;
+use App\Http\Controllers\API\WhiteNoiseController;
+use App\Http\Controllers\API\BreathingPatternController;
+use App\Http\Controllers\API\EmotionLogController;
+use App\Http\Controllers\API\UserMeditationHistoryController;
+use App\Http\Controllers\API\PersonalAccessTokenController;
 use Illuminate\Support\Facades\Route;
 
 // Public routes (no auth required)
@@ -39,6 +40,9 @@ Route::middleware(['js-authenticate-middleware-alias'])->group(function () {
 // Auth (requires login)
 Route::post('/login_info', [AuthController::class, 'login_info']);
 Route::post('/logout', [AuthController::class, 'logout']);
+
+// File upload
+Route::post('/file_upload', [FileUploadController::class, 'cache']);
 
 // User routes
 Route::prefix('users')->controller(UserController::class)->group(function() {
@@ -70,6 +74,7 @@ Route::prefix('meditation-categories')->controller(MeditationCategoryController:
     Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
+    Route::delete('/', 'delete');
 });
 
 // Meditation routes
@@ -77,6 +82,7 @@ Route::prefix('meditations')->controller(MeditationController::class)->group(fun
     Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
+    Route::delete('/', 'delete');
 });
 
 // SleepStory routes

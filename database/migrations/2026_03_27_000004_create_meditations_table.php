@@ -25,9 +25,10 @@ return new class extends Migration
         });
 
         Schema::create('meditation_category', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('meditation_id')->constrained()->cascadeOnDelete();
             $table->foreignId('meditation_category_id')->constrained()->cascadeOnDelete();
-            $table->primary(['meditation_id', 'meditation_category_id']);
+            $table->unique(['meditation_id', 'meditation_category_id']);
         });
     }
 

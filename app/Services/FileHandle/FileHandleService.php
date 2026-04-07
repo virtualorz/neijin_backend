@@ -22,10 +22,13 @@ class FileHandleService extends Service implements FileHandleContract
     public function classify(array $files_in_db,string|array $files): FileClassifyDto
     {
         // TODO: Implement classify() method.
-        if(!is_array($files))
-        {
+        if(is_string($files) || !array_is_list($files)){
             $files = [$files];
         }
+        if(!array_is_list($files_in_db)){
+            $files = [$files];
+        }
+
         $files = collect($files);
         $files_in_db = collect($files_in_db);
         $files_to_create = $files->filter(function ($file){
@@ -66,7 +69,7 @@ class FileHandleService extends Service implements FileHandleContract
      * @return array
      * @throws ServiceException
      */
-    public function store(array|string $file_key): array
+    public function store(array|string $file_key, string $upload_dir = null): array
     {
         // TODO: Implement store() method.
         try {
@@ -78,7 +81,10 @@ class FileHandleService extends Service implements FileHandleContract
                 $upload_file = $this->imageProcessService->make($upload_file);
 
                 //存檔
-                $stored_path = $upload_file->store(env('UPLOAD_DIR'));
+                if(!$upload_dir){
+                    $upload_dir = env('UPLOAD_DIR');
+                }
+                $stored_path = $upload_file->store($upload_dir);
                 $size = Storage::size($stored_path);
                 $info = pathinfo($stored_path);
 
@@ -89,7 +95,7 @@ class FileHandleService extends Service implements FileHandleContract
                     'org_name' => $org_name,
                     'content_type' => $info['extension'],
                     'file_size' => $size,
-                    'path' => $info['dirname'] . '/' . $info['basename'],
+                    'path' => Storage::url($info['dirname'] . '/' . $info['basename']),
                     'url' => Storage::url($info['dirname'] . '/' . $info['basename'])
                 ];
             }
@@ -114,6 +120,9 @@ class FileHandleService extends Service implements FileHandleContract
     public function match(array $files_in_db,array $files_not_modify):MatchResultDto
     {
         // TODO: Implement match() method.
+        if(!array_is_list($files_in_db)){
+            $files_in_db = [$files_in_db];
+        }
         $files_in_db = collect($files_in_db);
         $files_not_modify = collect($files_not_modify);
 
@@ -146,6 +155,6 @@ class FileHandleService extends Service implements FileHandleContract
 
     protected function _is_files_include(Collection $files_in_db, Collection $files_target):bool
     {
-        return json_encode($files_in_db->pluck('path')->intersect($files_target->pluck('path'))->values()) === json_encode($files_target->pluck('path'));
+        return json_encode($files_target->pluck('path')->values()) === json_encode($files_target->pluck('path'));
     }
 }

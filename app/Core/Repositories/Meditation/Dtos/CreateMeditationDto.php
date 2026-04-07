@@ -15,13 +15,7 @@ class CreateMeditationDto extends Dto
         public readonly bool $is_free,
         public readonly bool $is_published,
         public readonly string $sort_order,
-        public readonly string $is_free,
-        public readonly int $meditation_id,
-        public readonly int $meditation_id,
-        public readonly int $meditation_category_id,
-        public readonly int $meditation_category_id,
-        public readonly array $create_meditation_list = [],
-        public readonly array $create_meditation_list = []
+        public readonly array $create_meditation_category_list = []
     )
     {
     }
