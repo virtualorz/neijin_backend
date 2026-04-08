@@ -15,7 +15,6 @@ class CreateSubscriptionPlanDto extends Dto
         public readonly ?array $features,
         public readonly bool $is_active,
         public readonly string $sort_order,
-        public readonly array $create_subscription_list = [],
         public readonly array $create_subscription_list = []
     )
     {

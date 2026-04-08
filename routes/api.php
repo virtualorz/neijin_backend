@@ -60,6 +60,7 @@ Route::prefix('subscription-plans')->controller(SubscriptionPlanController::clas
     Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
+    Route::delete('/', 'delete');
 });
 
 // Subscription routes
@@ -67,6 +68,7 @@ Route::prefix('subscriptions')->controller(SubscriptionController::class)->group
     Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
+    Route::delete('/', 'delete');
 });
 
 // MeditationCategory routes

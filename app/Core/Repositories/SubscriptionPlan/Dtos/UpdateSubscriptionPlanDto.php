@@ -18,9 +18,6 @@ class UpdateSubscriptionPlanDto extends Dto
         public readonly string $sort_order,
         public readonly array $create_subscription_list = [],
         public readonly array $update_subscription_list = [],
-        public readonly array $delete_subscription_list = [],
-        public readonly array $create_subscription_list = [],
-        public readonly array $update_subscription_list = [],
         public readonly array $delete_subscription_list = []
     )
     {

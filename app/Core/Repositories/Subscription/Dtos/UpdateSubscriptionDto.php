@@ -9,8 +9,6 @@ class UpdateSubscriptionDto extends Dto
     public function __construct(
         public readonly int $id,
         public readonly int $user_id,
-        public readonly int $user_id,
-        public readonly int $subscription_plan_id,
         public readonly int $subscription_plan_id,
         public readonly string $status,
         public readonly ?string $payment_provider,
