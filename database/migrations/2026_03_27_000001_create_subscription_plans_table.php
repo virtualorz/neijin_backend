@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->json('features')->nullable()->comment('方案功能列表 JSON');
             $table->boolean('is_active')->default(true);
+            $table->boolean('is_recommended')->default(false)->comment('推薦方案');
             $table->unsignedSmallInteger('sort_order')->default(0);
             $table->timestamps();
         });

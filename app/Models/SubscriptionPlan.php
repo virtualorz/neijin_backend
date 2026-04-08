@@ -22,6 +22,7 @@ class SubscriptionPlan extends Model
             'description' => 'nullable|string',
             'features' => 'nullable|array',
             'is_active' => 'required|boolean',
+            'is_recommended' => 'required|boolean',
             'sort_order' => 'required|integer',
         ];
     }
@@ -32,6 +33,7 @@ class SubscriptionPlan extends Model
             'billing_cycle' => BillingCycle::class,
             'features' => 'array',
             'is_active' => 'boolean',
+            'is_recommended' => 'boolean',
         ];
     }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\MemberResetPasswordController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\Api\UserPreferencesController;
 use App\Http\Controllers\API\SubscriptionPlanController;
+use App\Http\Controllers\API\SubscribeController;
 use App\Http\Controllers\API\SubscriptionController;
 use App\Http\Controllers\API\MeditationCategoryController;
 use App\Http\Controllers\API\MeditationController;
@@ -70,6 +71,9 @@ Route::prefix('subscriptions')->controller(SubscriptionController::class)->group
     Route::put('/', 'update');
     Route::delete('/', 'delete');
 });
+
+// Subscribe action endpoint (action-based dispatcher: subscribe/switch/cancel)
+Route::post('/subscriptions/subscribe', [SubscribeController::class, 'subscribe']);
 
 // MeditationCategory routes
 Route::prefix('meditation-categories')->controller(MeditationCategoryController::class)->group(function() {
