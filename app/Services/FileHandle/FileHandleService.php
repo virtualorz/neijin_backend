@@ -26,7 +26,7 @@ class FileHandleService extends Service implements FileHandleContract
             $files = [$files];
         }
         if(!array_is_list($files_in_db)){
-            $files = [$files];
+            $files_in_db = [$files_in_db];
         }
 
         $files = collect($files);
@@ -84,8 +84,11 @@ class FileHandleService extends Service implements FileHandleContract
                 if(!$upload_dir){
                     $upload_dir = env('UPLOAD_DIR');
                 }
-                $stored_path = $upload_file->store($upload_dir);
-                $size = Storage::size($stored_path);
+                $size = $upload_file->getSize();
+                $stored_path = Storage::putFile($upload_dir, $upload_file);
+                if (!$stored_path) {
+                    throw new ServiceException('檔案上傳至 GCS 失敗');
+                }
                 $info = pathinfo($stored_path);
 
                 $result[] = [
@@ -95,8 +98,7 @@ class FileHandleService extends Service implements FileHandleContract
                     'org_name' => $org_name,
                     'content_type' => $info['extension'],
                     'file_size' => $size,
-                    'path' => Storage::url($info['dirname'] . '/' . $info['basename']),
-                    'url' => Storage::url($info['dirname'] . '/' . $info['basename'])
+                    'path' => $info['dirname'] . '/' . $info['basename'],
                 ];
             }
 

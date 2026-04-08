@@ -90,6 +90,7 @@ Route::prefix('sleep-stories')->controller(SleepStoryController::class)->group(f
     Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
+    Route::delete('/', 'delete');
 });
 
 // WhiteNoise routes
@@ -97,6 +98,7 @@ Route::prefix('white-noises')->controller(WhiteNoiseController::class)->group(fu
     Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
+    Route::delete('/', 'delete');
 });
 
 // BreathingPattern routes
@@ -104,6 +106,7 @@ Route::prefix('breathing-patterns')->controller(BreathingPatternController::clas
     Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
+    Route::delete('/', 'delete');
 });
 
 // EmotionLog routes

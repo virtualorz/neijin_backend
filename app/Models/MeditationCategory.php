@@ -15,6 +15,12 @@ class MeditationCategory extends Model
     public $timestamps = true;
 
     protected array $file_columns = ['icon'];
+    protected $appends = ['icon_url'];
+
+    public function getIconUrlAttribute(): ?string
+    {
+        return $this->getSignedUrl($this->icon);
+    }
 
     protected function casts(): array
     {

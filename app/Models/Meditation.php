@@ -16,6 +16,17 @@ class Meditation extends Model
     public $timestamps = true;
 
     protected array $file_columns = ['audio', 'cover_image'];
+    protected $appends = ['audio_url', 'cover_image_url'];
+
+    public function getAudioUrlAttribute(): ?string
+    {
+        return $this->getSignedUrl($this->audio);
+    }
+
+    public function getCoverImageUrlAttribute(): ?string
+    {
+        return $this->getSignedUrl($this->cover_image);
+    }
 
     protected function casts(): array
     {
