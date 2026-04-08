@@ -116,6 +116,7 @@ Route::prefix('emotion-logs')->controller(EmotionLogController::class)->group(fu
     Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
+    Route::delete('/', 'delete');
 });
 
 // UserMeditationHistory routes
@@ -123,6 +124,7 @@ Route::prefix('user-meditation-histories')->controller(UserMeditationHistoryCont
     Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
+    Route::delete('/', 'delete');
 });
 
 // PersonalAccessToken routes

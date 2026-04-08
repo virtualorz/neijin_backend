@@ -18,7 +18,8 @@ class UserMeditationHistory extends Model
     {
         return [
             'user_id' => 'required|integer',
-            'playable' => 'required',
+            'playable_type' => 'nullable|string',
+            'playable_id' => 'nullable|integer',
             'duration_seconds' => 'nullable',
             'completed' => 'required|bool',
             'played_date' => 'required|date'
