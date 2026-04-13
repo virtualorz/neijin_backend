@@ -36,6 +36,20 @@ Route::post('/member-password-reset/send-verification-code', [MemberResetPasswor
 Route::post('/member-password-reset/verify-code', [MemberResetPasswordController::class, 'verify_code']);
 Route::post('/member-password-reset/reset-password', [MemberResetPasswordController::class, 'reset_password']);
 
+// ============================================================
+// Public read-only endpoints (no auth required)
+// 未登入用戶也能瀏覽內容
+// ============================================================
+Route::get('/meditation-categories', [MeditationCategoryController::class, 'read_list']);
+Route::get('/meditations', [MeditationController::class, 'read_list']);
+Route::get('/sleep-stories', [SleepStoryController::class, 'read_list']);
+Route::get('/white-noises', [WhiteNoiseController::class, 'read_list']);
+Route::get('/breathing-patterns', [BreathingPatternController::class, 'read_list']);
+Route::get('/subscription-plans', [SubscriptionPlanController::class, 'read_list']);
+
+// ============================================================
+// Authenticated endpoints (login required)
+// ============================================================
 Route::middleware(['js-authenticate-middleware-alias'])->group(function () {
 
 // Auth (requires login)
@@ -56,9 +70,8 @@ Route::prefix('users')->controller(UserController::class)->group(function() {
 Route::put('/user-settings/preferences', [UserPreferencesController::class, 'update']);
 Route::put('/user-settings/reminders', [UserPreferencesController::class, 'update_reminders']);
 
-// SubscriptionPlan routes
+// SubscriptionPlan routes (CUD only, GET is public above)
 Route::prefix('subscription-plans')->controller(SubscriptionPlanController::class)->group(function() {
-    Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
     Route::delete('/', 'delete');
@@ -75,41 +88,36 @@ Route::prefix('subscriptions')->controller(SubscriptionController::class)->group
 // Subscribe action endpoint (action-based dispatcher: subscribe/switch/cancel)
 Route::post('/subscriptions/subscribe', [SubscribeController::class, 'subscribe']);
 
-// MeditationCategory routes
+// MeditationCategory routes (CUD only, GET is public above)
 Route::prefix('meditation-categories')->controller(MeditationCategoryController::class)->group(function() {
-    Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
     Route::delete('/', 'delete');
 });
 
-// Meditation routes
+// Meditation routes (CUD only, GET is public above)
 Route::prefix('meditations')->controller(MeditationController::class)->group(function() {
-    Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
     Route::delete('/', 'delete');
 });
 
-// SleepStory routes
+// SleepStory routes (CUD only, GET is public above)
 Route::prefix('sleep-stories')->controller(SleepStoryController::class)->group(function() {
-    Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
     Route::delete('/', 'delete');
 });
 
-// WhiteNoise routes
+// WhiteNoise routes (CUD only, GET is public above)
 Route::prefix('white-noises')->controller(WhiteNoiseController::class)->group(function() {
-    Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
     Route::delete('/', 'delete');
 });
 
-// BreathingPattern routes
+// BreathingPattern routes (CUD only, GET is public above)
 Route::prefix('breathing-patterns')->controller(BreathingPatternController::class)->group(function() {
-    Route::get('/', 'read_list');
     Route::post('/', 'create');
     Route::put('/', 'update');
     Route::delete('/', 'delete');
